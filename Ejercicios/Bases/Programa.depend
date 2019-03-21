@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1552914010 source:c:\users\alumno\desktop\programacion\programa\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+
+1552914010 
+
+1552953636 source:/home/lucas/Desktop/Programacion/Programa/main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+

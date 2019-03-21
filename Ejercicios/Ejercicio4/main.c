@@ -3,12 +3,10 @@
 #include <string.h>
 #define MAX 100
 
-int cargarArr​(){
-    return 5;
-}
+int cargarArr​(){return 0;}
 
-int imprimirArr(){return 5;}
+int imprimirArr(){return 0;}
 
-int invertirArr(){return 5;}​
+int invertirArr(){return 0;}​
 
 int main(){return 0;}

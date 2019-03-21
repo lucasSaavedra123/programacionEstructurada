@@ -13,10 +13,10 @@ char darStringCharCambiado(char string, char oldChar , char newChar){
     }
 
     return string;
+
 }
 
-int main()
-{
+int main(){
 
     char stringText[MAXCHARACTERS];
     char oldChar;

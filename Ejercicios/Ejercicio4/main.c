@@ -4,7 +4,7 @@
 #define MAX 100
 
 int cargarArr​(){
-    return 5;
+    return 0;
 }
 
 int imprimirArr(){return 5;}

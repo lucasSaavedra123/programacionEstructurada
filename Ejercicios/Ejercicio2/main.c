@@ -14,7 +14,10 @@ int producto(int n1, int n2){
 }
 
 int division(int n1, int n2){
-    return n1/n2;
+    if(n2 == 0)
+        printf("ERROR!");
+    else
+        return n1/n2;
 }
 
 

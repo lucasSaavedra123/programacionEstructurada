@@ -1,0 +1,22 @@
+En la programacion estructurada no hay saltos. Hay subrutinas. Hay subrutinas.
+
+Un ciclo hay una entrada o no, hay un verdadero y falso y se hace hasta que la condicion sea falsa. Los ciclos se hacen mientras la condicion sea verdadera.
+
+Este es el teorema de programación estructurada.
+
+Armar funciones nos ayuda a mantener, escribir menos codigo, etc. y tambien es como uno piensa.
+Es mas natural abstraer conceptos y agruparlos. Para eso es la funcion. Es como a la matematica es el factor comun.
+
+Esto es la programacion modular.
+
+Primero hay que ver el que, despues el como, por el ultimo hay que hacer
+
+Hay que tener resuelto que entradas se necesitan y que salidas se dan
+
+
+						ENTRADAS			SALIDAS
+					----------------------->PROCESO----------------------->
+
+
+Hay que usar correctamente las herramientas
+

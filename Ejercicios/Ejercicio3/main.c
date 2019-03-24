@@ -3,7 +3,7 @@
 #include <string.h>
 #define MAXCHARACTERS 100
 
-char darStringCharCambiado(char string, char oldChar , char newChar){
+char * darStringCharCambiado(char * string, char oldChar , char newChar){
 
     int i;
 
@@ -23,7 +23,7 @@ int main(){
     char newChar;
 
     printf("Ingrese texto: ");
-    scanf("%[^\n]s ",stringText);
+    scanf("%[^\n]s ", stringText);
 
     getchar();
 

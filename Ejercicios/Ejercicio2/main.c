@@ -1,21 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int suma(int n1, int n2){
+float suma(float n1, float n2){
     return n1+n2;
 }
 
-int resta(int n1, int n2){
+float resta(float n1, float n2){
     return n1-n2;
 }
 
-int producto(int n1, int n2){
+float producto(float n1, float n2){
     return n1*n2;
 }
 
-int division(int n1, int n2){
-    if(n2 == 0)
+float division(float n1, float n2){
+    if(n2 == 0){
         printf("ERROR!");
+        return 0;
+    }
     else
         return n1/n2;
 }
@@ -23,15 +25,15 @@ int division(int n1, int n2){
 
 int main()
 {
-    int entero1;
-    int entero2;
+    float numero1;
+    float numero2;
     char charOperacion;
 
     printf("Ingrese primer numero: ");
-    scanf("%d", &entero1);
+    scanf("%f", &numero1);
 
     printf("Ingrese primer numero: ");
-    scanf("%d", &entero2);
+    scanf("%f", &numero2);
 
     getchar();//Toma el segundo caracter del enter y se lo queda
 
@@ -39,13 +41,13 @@ int main()
     charOperacion = getchar();
 
     if(charOperacion == '+')
-        printf("%d",suma(entero1,entero2));
+        printf("%.0f",suma(numero1,numero2));
     else if(charOperacion == '-')
-        printf("%d",resta(entero1,entero2));
+        printf("%.0f",resta(numero1,numero2));
     else if(charOperacion == '*')
-        printf("%d",producto(entero1,entero2));
+        printf("%.0f",producto(numero1,numero2));
     else if(charOperacion == '/')
-        printf("%d",division(entero1,entero2));
+        printf("%.2f",division(numero1,numero2));
     else
         printf("ERROR!");
 

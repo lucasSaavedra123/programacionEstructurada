@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1553519264 source:c:\users\alumno\desktop\ejercicio4\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+
+1553519264 
+
+1553562860 source:/home/lucas/Desktop/programacionEstructurada/Ejercicios/Ejercicio4/main.c
+	<stdio.h>
+	<stdlib.h>
+

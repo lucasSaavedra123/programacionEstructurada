@@ -184,13 +184,13 @@ int main(){
     cargarText(arreglo);
     printf("\n");
 
-    printf("Texto sin corregir: ");
+    printf("Texto sin corregir:\n");
     imprimirText(arreglo);
     printf("\n");
 
     normalizar(arreglo);
 
-    printf("Texto corregido: ");
+    printf("Texto corregido:\n");
     imprimirText(arreglo);
     printf("\n");
 

@@ -87,7 +87,7 @@ void ordenarMatText(char matriz[FILAS][COLUMNAS]){
         for( x=0; x < COLUMNAS && matriz[y][x] != '\0' ; x++ ){
             for( z=0; z < FILAS && matriz[z][0] != '\0'; z++){
                 for( w=0; w < COLUMNAS && matriz[z][w] != '\0'; w++ ){
-                    if(matriz[y][x] < matriz[z][w]){
+                    if(darMinuscula(matriz[y][x]) < darMinuscula(matriz[z][w])){
                         memoria = matriz[y][x];
                         matriz[y][x] = matriz[z][w];
                         matriz[z][w] = memoria;

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
-#define FILAS 50
+#define FILAS 20
 #define COLUMNAS 50
 #define MAX 100
 
@@ -13,6 +13,7 @@ void imprimirMatText(char matriz[FILAS][COLUMNAS]){
         for( x=0; x < COLUMNAS && matriz[y][x] != '\0'; x++){
                 printf("%c",matriz[y][x]);
         }
+        printf("\n");
     }
 
 }
@@ -33,13 +34,13 @@ void cargarMatTextDeArch(char matriz[FILAS][COLUMNAS], char nombreArchivo[MAX]){
     c = fgetc(archivo);
 
     for(y=0; c != EOF && y < FILAS-1; y++ ){
-        for(x=0; c != EOF && x < COLUMNAS-1; x++ ){
+        for(x=0; c != EOF && x < COLUMNAS-1 && c != '\n'; x++ ){
             matriz[y][x] = c;
             c = fgetc(archivo);
         }
 
         matriz[y][x] = '\0';
-
+        c = fgetc(archivo);
     }
 
     matriz[y][0] = '\0';
@@ -56,7 +57,5 @@ int main(){
 
     cargarMatTextDeArch(matText,"equipos.txt");
     imprimirMatText(matText);
-
-
 }
 

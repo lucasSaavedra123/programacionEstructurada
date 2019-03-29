@@ -91,6 +91,8 @@ int main(){
     limpiarArregloInt(integerArray1);
     limpiarArregloInt(integerArray2);
 
+    //Se puede limpiar los arreglos tambien poniendo ={0}.
+
     printf("Escriba numeros (Maximo %d numeros) para el primer arreglo y finalice con 0: ", MAX-1);
     cargarArr(integerArray1);
     invertirArr(integerArray1);

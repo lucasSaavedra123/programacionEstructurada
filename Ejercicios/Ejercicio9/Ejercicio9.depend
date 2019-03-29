@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1553819450 source:/home/lucas/Desktop/programacionEstructurada/Ejercicios/Ejercicio9/main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+

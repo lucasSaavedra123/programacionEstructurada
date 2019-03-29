@@ -66,6 +66,13 @@ char darMinuscula(char c){
 
 }
 
+void limpiarArreglo(char arreglo[MAXCHARACTERS]){
+    int i;
+
+    for(i=0; i < MAXCHARACTERS; i++)
+        arreglo[i]=0;
+}
+
 void cargarText(char arreglo[MAXCHARACTERS]){
     int contador = 0;
     char c = 0;
@@ -100,10 +107,15 @@ void imprimirText(char arreglo[MAXCHARACTERS]){
 void recortarArregloChar(char arreglo[MAXCHARACTERS], int pos1, int pos2){
     int x=0;
     int y=0;
+    int anchoArreglo = entregarAnchoUtil(arreglo);
+    char copiaArreglo[MAXCHARACTERS];
 
-    while(x < MAXCHARACTERS){
+    copiarArreglo(arreglo,copiaArreglo);
+    limpiarArreglo(arreglo);
+
+    while(x < anchoArreglo){
         if(x < pos1 || x > pos2){
-            arreglo[y]=arreglo[x];
+            arreglo[y]=copiaArreglo[x];
             y++;
         }
         x++;
@@ -131,50 +143,48 @@ void insertarCaracterEnArreglo(char arreglo[MAXCHARACTERS],char c, int pos){
 
 void sacarEspaciosDeMas(char arreglo[MAXCHARACTERS]){
     int i=0;
-    int pos1 = 0;
-    int pos2 = 0;
-    int contadorEspacios = 0;
+    int anchoArreglo = entregarAnchoUtil(arreglo);
 
-    while(arreglo[i] == ' '){
-        i++;
-    }
+    //El numero 32 es para el caracter ' '
 
-    pos2 = i;
+    for( i=0 ; i < anchoArreglo ; i++){
+        if(arreglo[i] == ' '){
 
-    recortarArregloChar(arreglo, pos1, pos2-1);
-
-    pos1 = 0;
-    pos2 = 0;
-
-    for (i; arreglo[i] != '\0' ;i++){
-        //Se podria haber usado el numero 32
-        while(arreglo[i] == ' ' ){
-            if (contadorEspacios==0){
-                pos1 = i;
+            //Si el espacio del principio, si o si sacamos todos
+            if(i==0){
+                recortarArregloChar(arreglo,i,i);
+            }
+            else{
+                i++;
             }
 
-            i++;
-            contadorEspacios++;
+            while(arreglo[i] == ' '){
+                recortarArregloChar(arreglo,i,i);
+            }
         }
-
-        pos2 = i-1;
-
-        if(pos2 != pos1 && contadorEspacios > 1){
-            recortarArregloChar(arreglo, pos1, pos2-1);
-        }
-
-        contadorEspacios = 0;
-        pos1 = 0;
-        pos2 = 0;
 
     }
+
+}
+
+void capitalizarArreglo(char arreglo[MAXCHARACTERS]){
+    int i;
+    int anchoUtil = entregarAnchoUtil(arreglo);
+
+    for(i=0;!esLetra(arreglo[i]) && i < anchoUtil;i++){}
+
+    arreglo[i]=darMayuscula(arreglo[i]);
 }
 
 void normalizar(char arreglo[MAXCHARACTERS]){
-    //Por ahora suponemos que el primer caracter es una letra y que hay doble espacios o mas de 2 seguidos
-    arreglo[0] = darMayuscula(arreglo[0]);
+    int anchoUtil = entregarAnchoUtil(arreglo);//Coincide con la posicion del \0
+
     sacarEspaciosDeMas(arreglo);
-    insertarCaracterEnArreglo(arreglo, '.', entregarAnchoUtil(arreglo));
+    capitalizarArreglo(arreglo);
+
+    if(arreglo[anchoUtil-1] != '.'){
+        insertarCaracterEnArreglo(arreglo, '.', anchoUtil);
+    }
 }
 
 int main(){

@@ -3,28 +3,16 @@
 #define FILAS 3
 #define COLUMNAS 3
 
-void copiarMatriz(int matriz[FILAS][COLUMNAS], int matrizCopia[FILAS][COLUMNAS]){
-    int x;
-    int y;
-
-    for( y = 0; y < FILAS ; y++){
-        for(x = 0; x < COLUMNAS ; x++){
-            matrizCopia[y][x] = matriz[y][x];
-        }
-    }
-}
-
-//Recibe m
 void transponer(int matriz[FILAS][COLUMNAS]){
-    int matrizCopia[FILAS][COLUMNAS];
+    int numeroMemoria;
     int x;
     int y;
 
-    copiarMatriz(matriz, matrizCopia);
-
     for( y = 0; y < FILAS ; y++){
         for(x = 0; x < COLUMNAS ; x++){
-            matriz[x][y] = matrizCopia[y][x];
+            matriz[x][y] = numeroMemoria;
+            matriz[x][y] = matriz[y][x];
+            matrizCopia[y][x] = numeroMemoria;
         }
     }
 

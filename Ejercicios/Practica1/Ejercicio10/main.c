@@ -51,7 +51,6 @@ void cargarMatTextDeArch(char matriz[FILAS][COLUMNAS], char nombreArchivo[MAX]){
     }
 }
 
-
 int main(){
     char matText[FILAS][COLUMNAS] = {0};
 

@@ -5,6 +5,57 @@
 #define COLUMNAS 25
 #define N 25
 
+
+int strcmp(char arreglo1[], char arreglo2[]){
+    int i;
+    int mayorMenorOIguales = 0;
+
+    for(i=0; arreglo1[i] != '\0' && arreglo2[i] != '\0' && arreglo1[i] == arreglo2[i]; i++){}
+
+    if(arreglo1[i]!=arreglo2[i]){
+        if(arreglo1[i] < arreglo2[i]){
+            mayorMenorOIguales = -1;
+        }
+        else{
+            mayorMenorOIguales = 1;
+        }
+    }
+
+    return mayorMenorOIguales;
+
+}
+
+void strcpy(char arregloCopia[], char arreglo[]){
+    int i;
+
+    for(i=0; arreglo[i]!='\0' ; i++){
+        arregloCopia[i]=arreglo[i];
+    }
+
+    arregloCopia[i]='\0';
+}
+
+void intercambiarArreglos(int arreglo1[N], int arreglo2[N]){
+    int i;
+    int numeroMemoria;
+
+    for(i=0; i<N ; i++){
+            numeroMemoria = arreglo1[i];
+            arreglo1[i] = arreglo2[i];
+            arreglo2[i] = numeroMemoria;
+    }
+}
+
+void copiarArreglo(int arregloNuevo[N], int arregloACopiar[N]){
+    int i;
+
+    for( i=0; i < N; i++){
+        arregloNuevo[i] = arregloACopiar[i];
+    }
+}
+
+
+
 void cargarMatTextDeArch(char matriz[][N], char nombreArchivo[]){
     FILE * archivo;
     char c;
@@ -109,7 +160,6 @@ void imprimirTabla(int datos[][N], char cabeceras[][N], char items[][N], int fil
     }
 }
 
-
 void imprimirMatNum(int matriz[FILAS][COLUMNAS], int fil, int col){
     int x,y;
 
@@ -129,6 +179,33 @@ void imprimirMatNum(int matriz[FILAS][COLUMNAS], int fil, int col){
 
 }
 
+void ordenarTabla(char items[FILAS][COLUMNAS], int datos[FILAS][COLUMNAS], int numeroDeOrden){
+    int x;
+    int y;
+    char arregloMemoria[COLUMNAS]={0};
+
+    for(y=0; items[y][0] != '\0' ; y++){
+        for(x=0; items[x][0] != '\0'; x++){
+            if(strcmp(items[y],items[x]) < 0 && numeroDeOrden == 1){ //Si entrega un numero menor a 0, entonces matriz[y] es menor.
+                strcpy(arregloMemoria,items[y]);
+                strcpy(items[y],items[x]);
+                strcpy(items[x],arregloMemoria);
+
+                intercambiarArreglos(datos[x],datos[y]);
+            }
+            else if(strcmp(items[y],items[x]) > 0 && numeroDeOrden == 0){ //Si entrega un numero menor a 0, entonces matriz[y] es menor.
+                strcpy(arregloMemoria,items[y]);
+                strcpy(items[y],items[x]);
+                strcpy(items[x],arregloMemoria);
+
+                intercambiarArreglos(datos[x],datos[y]);
+            }
+        }
+    }
+
+}
+
+
 int main()
 {
     char cabeceras[FILAS][COLUMNAS] = {0};
@@ -139,6 +216,8 @@ int main()
     cargarMatTextDeArch(items,"items.txt");
     cargarMatNumDeArch(datos, "datos.txt");
 
-    imprimirTabla(datos,cabeceras,items,5,8);
+    ordenarTabla(items, datos, 1);
+
+    imprimirTabla(datos,cabeceras,items,4,8);
 
 }

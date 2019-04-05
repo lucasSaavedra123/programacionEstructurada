@@ -22,21 +22,6 @@ void copiarArregloInt(int arregloNuevo[FILAS], int arregloACopiar[FILAS]){
 
 }
 
-//PARA PRUEBAS
-void imprimirMatNum(int matriz[][COLUMNAS]){
-    int x,y;
-
-    for( y=0; y < FILAS; y++){
-        for( x=0; x < COLUMNAS; x++){
-                        printf("%d,",matriz[y][x]);
-        }
-
-        printf("\n");
-
-    }
-
-}
-
 void cargarMatNumDeArch(int matriz[][COLUMNAS], char nombreArchivo[]){
     FILE * archivo;
 
@@ -287,8 +272,6 @@ void imprimirNumDeMediciones(int matrizMediciones[FILAS][COLUMNAS]){
 
     printf("\nEl total de las mediciones hechas es de %d\n", totalMediciones);
 }
-
-
 
 int main()
 {

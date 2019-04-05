@@ -92,22 +92,13 @@ void cargarMatTextDeArch(char matriz[][N], char nombreArchivo[]){
 void cargarMatNumDeArch(int matriz[][N], char nombreArchivo[]){
     FILE * archivo;
 
-    int n0,n1,n2,n3,n4,n5,n6,n7;
     int y;
 
     archivo = fopen(nombreArchivo,"r");
 
-    for(y=0; fscanf(archivo,"%d,%d,%d,%d,%d,%d,%d,%d\n", &n0, &n1, &n2, &n3, &n4, &n5, &n6, &n7) != EOF && y < FILAS-1; y++){
-        matriz[y][0] = n0;
-        matriz[y][1] = n1;
-        matriz[y][2] = n2;
-        matriz[y][3] = n3;
-        matriz[y][4] = n4;
-        matriz[y][5] = n5;
-        matriz[y][6] = n6;
-        matriz[y][7] = n7;
-    }
-
+    for(y=0; fscanf(archivo,"%d,%d,%d,%d,%d,%d,%d,%d\n", &matriz[y][0], &matriz[y][1], &matriz[y][2],
+                                                         &matriz[y][3], &matriz[y][4], &matriz[y][5],
+                                                         &matriz[y][6], &matriz[y][7]) != EOF && y < FILAS-1; y++){}
     matriz[y][0] = EOF;
 
     fclose(archivo);
@@ -122,12 +113,7 @@ void imprimirTabla(int datos[][N], char cabeceras[][N], char items[][N], int fil
 
     //Imprimimos las cabeceras
     for(y=0; y<col+1; y++){
-        if(y==0){
-            printf("%s\t\t",cabeceras[y]);
-        }
-        else{
-            printf("%s\t",cabeceras[y]);
-        }
+            printf("%-8s",cabeceras[y]);
     }
 
     printf("\n");
@@ -146,37 +132,18 @@ void imprimirTabla(int datos[][N], char cabeceras[][N], char items[][N], int fil
 
     //Imprimimos los items a medida que pasan los datos
     for(y=0; y<fil; y++){
-        printf("%s\t\t",items[y]);
+        printf("%-8s",items[y]);
         for(x=0; x<col; x++){
             if( datos[y][x] > 0 && x == 7 ){
-                    printf("+%d\t",datos[y][x]);
+                    printf("+%-7d",datos[y][x]);
             }
             else{
-                printf("%d\t",datos[y][x]);
+                printf("%-8d",datos[y][x]);
             }
         }
         printf("\n");
 
     }
-}
-
-void imprimirMatNum(int matriz[FILAS][COLUMNAS], int fil, int col){
-    int x,y;
-
-    for( y=0; y < FILAS && matriz[y][0] != EOF && y < fil; y++){
-        for( x=0; x < COLUMNAS && x < col; x++){
-                if( matriz[y][x] > 0 && x == 7 ){
-                        printf("+%d\t",matriz[y][x]);
-                }
-                else{
-                    printf("%d\t",matriz[y][x]);
-                }
-        }
-
-        printf("\n");
-
-    }
-
 }
 
 void ordenarTabla(char items[FILAS][COLUMNAS], int datos[FILAS][COLUMNAS], int numeroDeOrden){
@@ -218,6 +185,6 @@ int main()
 
     ordenarTabla(items, datos, 1);
 
-    imprimirTabla(datos,cabeceras,items,4,8);
+    imprimirTabla(datos,cabeceras,items,5,8);
 
 }

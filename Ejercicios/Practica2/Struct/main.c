@@ -46,6 +46,14 @@ int main()
     punto puntos[100];//Creamos un arreglo que tiene variables del tipo for
     struct s_tiempo tiempo = {0,0,0};
 
+    //Nunca hagamos
+    /*
+    nombre = persona.nombre por que guardamos nada mas la dirección de memoria
+
+    Pero se pueden igualar structs.
+    */
+
+
 
 
     scanf("%lf", &p1.x);

@@ -53,6 +53,7 @@ int main(){
 
     printf("Ingrese texto: ");
     cargarArreglo(stringText);
+    cargarArreglo(stringText);
 
     printf("\n");
 

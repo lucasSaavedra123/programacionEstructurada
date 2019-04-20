@@ -1,6 +1,2 @@
-1, ciencias naturales
-2, matematica
-3, lengua
-4, educación fisica
-5, programación estructurada
-6, fisica 1
+1,Filosofia
+2,Matematica

@@ -17,6 +17,8 @@ int main()
                                 //Podemos igualarlo a NULL (es mas generico para los sistemas operativos).
                                 //Un puntero puede tener hasta 4 bytes
 
+    int arreglo[5];
+
     puntero_a = &a; //El ampersan aca da la dirección de memoria de la variable
                     //Para cambiar la direccion de memoria, hay que pedirle permiso al sistema operativo
 
@@ -28,7 +30,8 @@ int main()
 
     /*
 
-    Hay variables tanto para el proceso y para todos los otros
+    Hay variables tanto para
+ el proceso y para todos los otros
     que haya en el sistema
 
     */
@@ -49,7 +52,6 @@ int main()
     printf("El contenido de a es %d\n", *(&a));
     printf("La dirección de a es %d\n", puntero_a);
     printf("La dirección de a es %d\n", &a);
-
     /*
 
     Las funciones estan espacios de memoria distintas
@@ -63,10 +65,15 @@ int main()
     /*Un arreglo es un puntero*/
 
 
+
+
     tot = suma(numero1,numero2);
     suma2(numero1,numero2, &tot);
 
     printf("%d", tot);
+
+    /*Losa arreglos tienen sus variables una a lado del otro*/
+
 
     return 0;
 }
@@ -79,5 +86,16 @@ void suma2 (int a, int b, int * suma){
     //Pasamos la referencia de la variable
 
     *suma = a + b; //Guardame la suma en la direccion de la memoria suma
+
+}
+
+/*Un arreglo es char * arr*/
+
+void imprimir(char * arr){
+    int i = 0;
+
+    for(i = 0; i < 5 && arr[i] != '\0' ; i++){
+        printf("%c", arr[i]);
+    }
 
 }

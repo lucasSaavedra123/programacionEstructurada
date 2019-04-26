@@ -12,6 +12,29 @@ struct persona{
     char pais[MAXCHARACTERS];
 };
 
+void cargarString(char string[MAXCHARACTERS]){
+    char caracter = getchar();
+    int indice = 0;
+
+    /*--------------------------------
+    Se verifica que el getchar no haya
+    leido el caracter '\r'
+    --------------------------------*/
+
+    if( caracter == 10 ){
+        caracter = getchar();
+    }
+
+    while( indice < MAXCHARACTERS-1 && caracter != 10){
+        string[indice] = caracter;
+        indice++;
+
+        caracter = getchar();
+    }
+
+    string[indice] = '\0';
+}
+
 
 void agregarPersonaAlArchivo(struct persona personaNueva, char nombreDelArchivo[]){
     FILE* archivo = fopen(nombreDelArchivo,"a");
@@ -34,10 +57,10 @@ void cargarPersonas(){
     while(personaNueva.dni != 0 && contador < MAXCANTIDAD){
 
         printf("Ingrese nombre: ");
-        scanf("%s", personaNueva.nombre);
+        cargarString(personaNueva.nombre);
 
         printf("Ingrese pais: ");
-        scanf("%s", personaNueva.pais);
+        cargarString(personaNueva.pais);
 
         printf("%d\n", personaNueva.dni);
         printf("%s\n", personaNueva.nombre);

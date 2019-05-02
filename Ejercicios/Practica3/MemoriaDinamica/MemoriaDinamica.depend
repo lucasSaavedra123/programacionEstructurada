@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1556823464 source:c:\users\151800131\desktop\memoriadinamica\main.c
+	<stdio.h>
+	<stdlib.h>
+

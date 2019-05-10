@@ -14,17 +14,15 @@ t_texto cargarTexto();
 
 int main()
 {
-    escribirArchTex("data5.csv", cargarTexto());
+    escribirArchTex("frases_con_longitud.csv", cargarTexto());
     return 0;
 }
 
 void escribirArchTex(const char * nomArch, t_texto texto){
 
-    FILE * archivo = fopen(nomArch, "w");
+    FILE * archivo = fopen(nomArch, "a");
     int indiceLetras = 0;
     char caracter = 0;
-
-    printf("\n%d", texto.longitud);
 
     fprintf(archivo, "%d,", texto.longitud);
 
@@ -35,6 +33,8 @@ void escribirArchTex(const char * nomArch, t_texto texto){
         indiceLetras++;
         caracter = *(texto.txt+indiceLetras);
     }
+
+    fputc('\n', archivo);
 
     fclose(archivo);
 }
@@ -48,11 +48,11 @@ t_texto cargarTexto(){
 
     caracter = getche();
 
-    while( caracter != '\r' ){
+    while( caracter != 10 ){
         *( (texto.txt) + contadorLetras ) = caracter;
 
         contadorLetras++;
-        texto.txt = realloc(texto.txt, sizeof(char)*contadorLetras );
+        texto.txt = realloc(texto.txt, (sizeof(char)*contadorLetras+sizeof(int)) );
 
         caracter = getche();
     }

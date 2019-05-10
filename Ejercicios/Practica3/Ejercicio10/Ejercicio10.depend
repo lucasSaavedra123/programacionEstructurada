@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1557275209 source:/home/lucas/Desktop/programacionEstructurada/Ejercicios/Practica3/Ejercicio10RENAME/main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+
+1557275473 source:/home/lucas/Desktop/programacionEstructurada/Ejercicios/Practica3/Ejercicio10/main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+

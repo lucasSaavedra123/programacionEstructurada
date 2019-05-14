@@ -5,7 +5,7 @@ int dividirDosNumerosEnteros(int dividendo, int divisor);
 
 int main()
 {
-    printf("%d\n", dividirDosNumerosEnteros(-20,5));
+    printf("%d\n", dividirDosNumerosEnteros(-15,5));
     return 0;
 }
 
@@ -22,42 +22,21 @@ int dividirDosNumerosEnteros(int dividendo, int divisor){
     El resultado del que se habla es como si la función tenga los dos valores positivos.
     */
 
-    int resta = 0;
+    int resta = dividendo - divisor;
 
     if(divisor == 0 || dividendo == 0)
         return 0;
 
-    if(divisor > 0 && dividendo > 0 && resta > 0){
-        resta = dividendo - divisor;
+    if(divisor > 0 && dividendo > 0 && resta >= 0)
         return 1 + dividirDosNumerosEnteros(resta, divisor);
-    }
 
-    else if( (divisor < 0 && dividendo < 0) || (divisor > 0 && dividendo < 0) || (divisor < 0 && dividendo > 0)){
-        if(divisor < 0 && dividendo < 0)
-            return dividirDosNumerosEnteros(-dividendo,-divisor);
-        else if(divisor > 0 && dividendo < 0)
-            return -dividirDosNumerosEnteros(dividendo,-divisor);
-        else if(divisor < 0 && dividendo > 0)
-            return -dividirDosNumerosEnteros(-dividendo,divisor);
-    }
-
-    else
-        return 1;
-}
-
-/* ESTA FUNCION ES PARA LLEVAR AL DIVIDENDO HACIA 0, PERO AL FINAL NO SE USO.
-int decrecimientoHaciaCero(int dividendo, int divisor){
-
-    if(dividendo > 0 && divisor > 0)
-        return dividendo - divisor;
-    else if(dividendo < 0 && divisor < 0)
-        return dividendo - divisor;
-    else if(dividendo > 0 && divisor < 0)
-        return dividendo + divisor;
-    else if(dividendo < 0 && divisor > 0)
-        return dividendo + divisor;
+    //Esto solo sera ejecutado (o no, en el caso que ambos numeros sean positivos) la primera vez que se entra
+    else if(divisor < 0 && dividendo < 0)
+        return dividirDosNumerosEnteros(-dividendo,-divisor);
+    else if(divisor > 0 && dividendo < 0)
+        return -dividirDosNumerosEnteros(dividendo,-divisor);
+    else if(divisor < 0 && dividendo > 0)
+        return -dividirDosNumerosEnteros(-dividendo,divisor);
     else
         return 0;
-
 }
-*/

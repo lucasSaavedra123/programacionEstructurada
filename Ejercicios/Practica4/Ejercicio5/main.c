@@ -2,12 +2,15 @@
 #include <stdlib.h>
 
 int retornarNumeroMasGrandeDelArreglo(int * arreglo);
+int * retornarDireccionDelNumeroMasGrandeDelArreglo(int * arreglo);
 
 int main()
 {
     int arregloDeNumeros[] = {-10,-2,-3,-5,-8,-7,-5,0};
 
-    printf("Numero mas grande: %d", retornarNumeroMasGrandeDelArreglo(arregloDeNumeros));
+    printf("Numero mas grande: %d\n", retornarNumeroMasGrandeDelArreglo(arregloDeNumeros));
+    printf("Su direccion de memoria es: %p\n", retornarDireccionDelNumeroMasGrandeDelArreglo(arregloDeNumeros));
+
     return 0;
 }
 
@@ -34,4 +37,23 @@ int retornarNumeroMasGrandeDelArreglo(int * arreglo){
         return 0; //Este ese ejecuta cuando se llega al 0. Se devuelve 0 y se compara
 }
 
+int * retornarDireccionDelNumeroMasGrandeDelArreglo(int * arreglo){
 
+    int * direccionDelNumeroDeFuncionActual = arreglo;
+    int * direccionDelNumeroDeFuncionAnterior = NULL;
+
+    if( *(arreglo) != 0 ){
+        direccionDelNumeroDeFuncionAnterior = retornarDireccionDelNumeroMasGrandeDelArreglo(arreglo+1);
+
+        if(direccionDelNumeroDeFuncionAnterior == NULL)
+            return direccionDelNumeroDeFuncionActual;
+
+        if( *(direccionDelNumeroDeFuncionActual) > *(direccionDelNumeroDeFuncionAnterior) )
+            return direccionDelNumeroDeFuncionActual;
+        else
+            return direccionDelNumeroDeFuncionAnterior;
+
+    }
+    else
+        return NULL;
+}

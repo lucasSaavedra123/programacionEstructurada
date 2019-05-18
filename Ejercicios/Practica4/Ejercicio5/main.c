@@ -6,7 +6,7 @@ int * retornarDireccionDelNumeroMasGrandeDelArreglo(int * arreglo);
 
 int main()
 {
-    int arregloDeNumeros[] = {-10,-2,-3,-5,-8,-7,-5,0};
+    int arregloDeNumeros[] = {1,5,6,-5,6,12,45,12,5,6,0};
 
     printf("Numero mas grande: %d\n", retornarNumeroMasGrandeDelArreglo(arregloDeNumeros));
     printf("Su direccion de memoria es: %p\n", retornarDireccionDelNumeroMasGrandeDelArreglo(arregloDeNumeros));

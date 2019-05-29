@@ -4,12 +4,11 @@
 void ordenarCrecientementeArreglo(int * arreglo);
 void imprimirArreglo(int * arreglo);
 
-int * retornarDireccionDelNumeroMasGrandeDelArreglo(int * arreglo);
+int * retornarDireccionDelNumeroMasChicoDelArreglo(int * arreglo);
 
 int main()
 {
     int arregloDeNumeros[5] = {10,1,2,3,0};
-    int i;
 
     imprimirArreglo(arregloDeNumeros);
     ordenarCrecientementeArreglo(arregloDeNumeros);
@@ -20,26 +19,33 @@ int main()
 
 void ordenarCrecientementeArreglo(int * arreglo){
 
-    int numeroEnLaDireccionDelPuntero = *(arreglo);
-    int direccionDelNumeroMasGrandeEnElArreglo = retornarDireccionDelNumeroMasGrandeDelArreglo(arreglo);
+    int numeroEnLaDireccionDelPuntero = (*arreglo);
+    int * direccionDelNumeroMasChicoEnElArreglo = retornarDireccionDelNumeroMasChicoDelArreglo(arreglo);
+    int numeroDeLaDireccionBuscada;
 
-    if(numeroEnLaDireccionDelPuntero != 0)
+    if(numeroEnLaDireccionDelPuntero != 0){
+        numeroDeLaDireccionBuscada = *direccionDelNumeroMasChicoEnElArreglo;
+
+        (*direccionDelNumeroMasChicoEnElArreglo)=numeroEnLaDireccionDelPuntero;
+        (*arreglo)=numeroDeLaDireccionBuscada;
+
         ordenarCrecientementeArreglo(arreglo+1);
+    }
 
 }
 
-int * retornarDireccionDelNumeroMasGrandeDelArreglo(int * arreglo){
+int * retornarDireccionDelNumeroMasChicoDelArreglo(int * arreglo){
 
     int * direccionDelNumeroDeFuncionActual = arreglo;
     int * direccionDelNumeroDeFuncionAnterior = NULL;
 
     if( *(arreglo) != 0 ){
-        direccionDelNumeroDeFuncionAnterior = retornarDireccionDelNumeroMasGrandeDelArreglo(arreglo+1);
+        direccionDelNumeroDeFuncionAnterior = retornarDireccionDelNumeroMasChicoDelArreglo(arreglo+1);
 
         if(direccionDelNumeroDeFuncionAnterior == NULL)
             return direccionDelNumeroDeFuncionActual;
 
-        if( *(direccionDelNumeroDeFuncionActual) > *(direccionDelNumeroDeFuncionAnterior) )
+        if( *(direccionDelNumeroDeFuncionActual) < *(direccionDelNumeroDeFuncionAnterior) )
             return direccionDelNumeroDeFuncionActual;
         else
             return direccionDelNumeroDeFuncionAnterior;

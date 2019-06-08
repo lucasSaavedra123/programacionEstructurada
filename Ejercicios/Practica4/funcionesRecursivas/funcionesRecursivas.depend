@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1559325888 source:/home/lucas/Desktop/programacionEstructurada/Ejercicios/Practica4/funcionesRecursivas/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+

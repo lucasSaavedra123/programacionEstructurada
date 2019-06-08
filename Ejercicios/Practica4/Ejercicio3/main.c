@@ -5,7 +5,7 @@ int darRestoDeDosNumerosEnteros(int dividendo, int divisor);
 
 int main()
 {
-    printf("%d",darRestoDeDosNumerosEnteros(21,-4));
+    printf("%d",darRestoDeDosNumerosEnteros(10,3));
     return 0;
 }
 

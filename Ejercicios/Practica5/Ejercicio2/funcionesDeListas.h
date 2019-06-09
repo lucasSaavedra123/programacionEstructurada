@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
+//Voy agregando las funciones aca a medida que voy avanzando con los ejercicios asi no repite continuamente codigo
 
 //Definimos a un nodo
 struct s_nodo{
@@ -10,33 +9,14 @@ struct s_nodo{
 typedef struct s_nodo * nodo;
 
 //Prototipo de funciones para listas
-//En este ejercicio me planteo las funciones para utilizar listas
-//Las listas admiten agregar, quitar elementos, recorrerla (por ejemplo para imprimirla),
-//y agregar en forma ordenada (si la lista define un orden interno).
 
 void agregarValorAlaLista(int valor, nodo * punteroAlNodo);
-//Funcion de recorrimiento de lista. Imprimimos los elementos
 
+//Funcion de recorrimiento de lista. Imprimimos los elementos
 void imprimirLista(nodo nodoDeLista);//Imprime la lista
 void imprimirElementosDeLista(nodo nodoDeLista);//Imprime la list usando la función anterior pero lo hace mas prolijo
-
 void imprimirListaAlReves(nodo nodoDeLista);
 void imprimirElementosDeListaAlReves(nodo nodoDeLista);
-
-int main()
-{
-    nodo listaDeNumeros = NULL;
-
-    agregarValorAlaLista(14, &listaDeNumeros);
-    agregarValorAlaLista(17, &listaDeNumeros);
-    agregarValorAlaLista(20, &listaDeNumeros);
-    agregarValorAlaLista(23, &listaDeNumeros);
-
-    imprimirElementosDeLista(listaDeNumeros);
-    imprimirElementosDeListaAlReves(listaDeNumeros);
-
-    return 0;
-}
 
 void agregarValorAlaLista(int valor, nodo * punteroAlNodo){
 

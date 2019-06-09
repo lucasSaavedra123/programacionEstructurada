@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1560037974 source:/home/lucas/Desktop/programacionEstructurada/Ejercicios/Practica5/Ejercicio4/main.c
+	<stdio.h>
+	<stdlib.h>
+	"funcionesDeListas.h"
+
+1560036839 /home/lucas/Desktop/programacionEstructurada/Ejercicios/Practica5/Ejercicio4/funcionesDeListas.h
+

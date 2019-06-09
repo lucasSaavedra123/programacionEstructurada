@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1560044712 source:/home/lucas/Desktop/programacionEstructurada/Ejercicios/Practica5/Ejercicio6/main.c
+	<stdio.h>
+	<stdlib.h>
+	"structsFile.h"
+	"funcionesDeCola.h"
+	"funcionesDePila.h"
+
+1560044720 /home/lucas/Desktop/programacionEstructurada/Ejercicios/Practica5/Ejercicio6/structsFile.h
+
+1560044990 /home/lucas/Desktop/programacionEstructurada/Ejercicios/Practica5/Ejercicio6/funcionesDeCola.h
+
+1560044607 /home/lucas/Desktop/programacionEstructurada/Ejercicios/Practica5/Ejercicio6/funcionesDePila.h
+

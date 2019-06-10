@@ -9,3 +9,11 @@ struct s_cola{
     nodo nodoAtras;
 };
 typedef struct s_cola cola;
+
+struct s_nodo_bin
+{
+    int valor;
+    struct s_nodo_bin* nodoIzquierda;
+    struct s_nodo_bin* nodoDerecha;
+};
+typedef struct s_nodo_bin * nodoArbol;

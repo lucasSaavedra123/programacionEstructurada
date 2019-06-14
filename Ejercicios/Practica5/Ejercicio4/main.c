@@ -1,41 +1,64 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "funcionesDeListas.h"
 
-void eliminarPosicionDeLista(int posicion, nodo * punteroAlNodo);
+struct s_nodo{
+    int valor;
+    struct s_nodo * siguienteNodo;
+};
+
+typedef struct s_nodo * nodo;
+
+void agregarNumeroALista(int, nodo *);
+void eliminarPosicionDeLaLista(int, nodo *);
+void imprimirLista(nodo);
 
 int main()
 {
-    nodo lista = NULL;
+    nodo listaDeNumeros = NULL;
 
-    agregarValorAlaLista(2, &lista);
-    agregarValorAlaLista(4, &lista);
-    agregarValorAlaLista(10, &lista);
-    agregarValorAlaLista(3, &lista);
+    agregarNumeroALista(5, &listaDeNumeros);
+    agregarNumeroALista(10, &listaDeNumeros);
+    agregarNumeroALista(9, &listaDeNumeros);
+    agregarNumeroALista(2, &listaDeNumeros);
 
-    imprimirElementosDeLista(lista);
+    eliminarPosicionDeLaLista(2, &listaDeNumeros);
 
-    eliminarPosicionDeLista(2, &lista);
-
-    imprimirElementosDeLista(lista);
+    imprimirLista(listaDeNumeros);
 
     return 0;
 }
 
-void eliminarPosicionDeLista(int posicion, nodo * punteroAlNodo){
-
-    nodo auxiliar = NULL;
-
-    if( posicion > 0 && (*punteroAlNodo) != NULL){
-        eliminarPosicionDeLista(posicion-1, & ((*punteroAlNodo)->siguienteNodo) );
+void agregarNumeroALista(int numero, nodo * direccionDelNodo){
+    if( (*direccionDelNodo) == NULL ){
+        (*direccionDelNodo) = malloc( sizeof(struct s_nodo) );
+        (*direccionDelNodo)->valor = numero;
+        (*direccionDelNodo)->siguienteNodo = NULL;
     }
     else{
-        if((*punteroAlNodo) != NULL){
-            //Quiere decir que estamos en la posicion que buscamos ya que posicion es igual a 0
-            auxiliar = (*punteroAlNodo);
-            (*punteroAlNodo) = (*punteroAlNodo)->siguienteNodo;
-            free(auxiliar);
+        agregarNumeroALista(numero, &((*direccionDelNodo)->siguienteNodo) );
+    }
+}
+
+void eliminarPosicionDeLaLista(int posicion, nodo * direccionDelNodo){
+    nodo nodoAuxiliar;
+
+    if( (*direccionDelNodo) != NULL ){
+
+        if( posicion == 0 ){
+            nodoAuxiliar = (*direccionDelNodo);
+            (*direccionDelNodo) = (*direccionDelNodo)->siguienteNodo;
+            free(nodoAuxiliar);
+        }
+
+        else{
+            eliminarPosicionDeLaLista(posicion-1, &( (*direccionDelNodo)->siguienteNodo ) );
         }
     }
+}
 
+void imprimirLista(nodo nodoDeLista){
+    if(nodoDeLista != NULL){
+        printf("%d\n", nodoDeLista->valor);
+        imprimirLista(nodoDeLista->siguienteNodo);
+    }
 }

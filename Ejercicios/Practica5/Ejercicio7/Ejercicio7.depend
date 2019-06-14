@@ -1,8 +1,0 @@
-# depslib dependency file v1.0
-1560123983 source:/home/lucas/Desktop/programacionEstructurada/Ejercicios/Practica5/Ejercicio7/main.c
-	<stdio.h>
-	<stdlib.h>
-	"../structsFile.h"
-
-1560124006 /home/lucas/Desktop/programacionEstructurada/Ejercicios/Practica5/structsFile.h
-

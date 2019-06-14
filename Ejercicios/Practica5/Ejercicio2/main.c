@@ -1,57 +1,66 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "funcionesDeListas.h" //Tiene tambien al struct de nodo
 
-void agregarValorAlaListaOrdenadamenteASC(int valor, nodo * punteroAlNodo);
+struct s_nodo{
+    int valor;
+    struct s_nodo * siguienteNodo;
+};
+
+typedef struct s_nodo * nodo;
+
+void insertarNumeroALista(int, nodo *);
+void imprimirLista(nodo);
 
 int main()
 {
-    nodo lista = NULL;
+    nodo listaDeNumeros = NULL;
 
-    //Probamos con todos estos valores y despues lo imprimimos
-    agregarValorAlaListaOrdenadamenteASC(1,&lista);
-    agregarValorAlaListaOrdenadamenteASC(6,&lista);
-    agregarValorAlaListaOrdenadamenteASC(2,&lista);
-    agregarValorAlaListaOrdenadamenteASC(-1,&lista);
-    agregarValorAlaListaOrdenadamenteASC(25,&lista);
-    agregarValorAlaListaOrdenadamenteASC(10,&lista);
-    agregarValorAlaListaOrdenadamenteASC(-1,&lista);
+    insertarNumeroALista(2, &listaDeNumeros);
+    insertarNumeroALista(1, &listaDeNumeros);
+    insertarNumeroALista(10,&listaDeNumeros);
+    insertarNumeroALista(5, &listaDeNumeros);
+    insertarNumeroALista(4, &listaDeNumeros);
 
-    imprimirElementosDeLista(lista);
+
+    imprimirLista(listaDeNumeros);
 
     return 0;
 }
 
-void agregarValorAlaListaOrdenadamenteASC(int valor, nodo * punteroAlNodo){
-        nodo nuevoEspacio = NULL;   //Aca guardamos el lugar
-                                    //donde vamos a poner el numero a mover para
-                                    //dejar ordenada la lista
+void insertarNumeroALista(int numero, nodo * direccionDelNodo){
 
-        if((*punteroAlNodo) == NULL){
-            //Llego a ser el ultimo elemento de la lista
-            (*punteroAlNodo) = malloc(sizeof(struct s_nodo));
-            (*punteroAlNodo)->valor = valor;
-            (*punteroAlNodo)->siguienteNodo = NULL;
+    nodo nodoAuxiliar; //Al correr el valor, lo tiramos aca y listo
+
+    if( (*direccionDelNodo) == NULL ){
+
+        (*direccionDelNodo) = malloc( sizeof(struct s_nodo) );
+        (*direccionDelNodo)->valor = numero;
+        (*direccionDelNodo)->siguienteNodo = NULL;
+
+    }
+    else{
+
+        if( (*direccionDelNodo)->valor > numero ){
+
+            nodoAuxiliar = malloc(sizeof(struct s_nodo));
+            (*nodoAuxiliar) = (*(*direccionDelNodo));//Ya guardamos este nodo en otro lado
+            (*direccionDelNodo)->valor = numero;
+            (*direccionDelNodo)->siguienteNodo = nodoAuxiliar;
+
         }
-
         else{
-           //Tiene informacion. Entonces la comparamos.
-            if((*punteroAlNodo)->valor > valor){
 
-                nuevoEspacio = malloc(sizeof(struct s_nodo));   //Asignamos el nuevo espacio
-                                                                //donde guardaremos la informacion
-                                                                //del nodo actual
-
-                (*nuevoEspacio) = *(*punteroAlNodo);            //Copiamos los datos
-
-                (*punteroAlNodo)->valor = valor;                //Reemplamos los datos
-                (*punteroAlNodo)->siguienteNodo = nuevoEspacio;
-
-            }
-
-            else{
-                agregarValorAlaListaOrdenadamenteASC(valor, &( (*punteroAlNodo)->siguienteNodo) );
-            }
+            insertarNumeroALista(numero, &((*direccionDelNodo)->siguienteNodo));
 
         }
+
+    }
+
+}
+
+void imprimirLista(nodo nodoDeLista){
+    if(nodoDeLista != NULL){
+        printf("%d\n", nodoDeLista->valor);
+        imprimirLista(nodoDeLista->siguienteNodo);
+    }
 }

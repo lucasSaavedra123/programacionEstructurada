@@ -1,45 +1,69 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "funcionesDeListas.h"
 
-void eliminarValorDeLista(int valor,nodo * punteroAlNodo);
+struct s_nodo{
+    int valor;
+    struct s_nodo * siguienteNodo;
+};
+
+typedef struct s_nodo * nodo;
+
+void agregarNumeroALista(int, nodo *);
+void eliminarNumeroDeLaLista(int, nodo *);
+void imprimirLista(nodo);
 
 int main()
 {
-    nodo lista = NULL;
-    agregarValorAlaLista(1,&lista);
-    agregarValorAlaLista(10,&lista);
-    agregarValorAlaLista(2,&lista);
-    agregarValorAlaLista(5,&lista);
-    agregarValorAlaLista(3,&lista);
-    agregarValorAlaLista(5,&lista);
+    nodo listaDeNumeros = NULL;
 
-    imprimirElementosDeLista(lista);
+    agregarNumeroALista(5, &listaDeNumeros);
+    agregarNumeroALista(10, &listaDeNumeros);
+    agregarNumeroALista(9, &listaDeNumeros);
+    agregarNumeroALista(2, &listaDeNumeros);
 
-    printf("\nBorramos el primer 5...\n");
-    eliminarValorDeLista(5, &lista);
+    eliminarNumeroDeLaLista(10, &listaDeNumeros);
 
-    imprimirElementosDeLista(lista);
+    imprimirLista(listaDeNumeros);
 
     return 0;
 }
 
-void eliminarValorDeLista(int valor,nodo * punteroAlNodo){
+void agregarNumeroALista(int numero, nodo * direccionDelNodo){
+    if( (*direccionDelNodo) == NULL ){
+        (*direccionDelNodo) = malloc( sizeof(struct s_nodo) );
+        (*direccionDelNodo)->valor = numero;
+        (*direccionDelNodo)->siguienteNodo = NULL;
+    }
+    else{
+        agregarNumeroALista(numero, &((*direccionDelNodo)->siguienteNodo) );
+    }
+}
 
-    nodo auxiliar = NULL;
+void eliminarNumeroDeLaLista(int numero, nodo * direccionDelNodo){
 
-    if((*punteroAlNodo) != NULL ){
+    nodo nodoAuxiliar;
 
-        if( (*punteroAlNodo)->valor == valor ){
-            auxiliar = (*punteroAlNodo);
-            (*punteroAlNodo) = (auxiliar)->siguienteNodo;
-            free(auxiliar);
+    if( (*direccionDelNodo) != NULL ){
 
-            //eliminarValorDeLista(valor, punteroAlNodo); //Esto permite borrar todos los valores que coincidan con el valor pasado. Fijarse si esta bien
+        if( (*direccionDelNodo)->valor == numero ){
+            nodoAuxiliar = (*direccionDelNodo);
+            (*direccionDelNodo)= nodoAuxiliar->siguienteNodo;
+            free(nodoAuxiliar);
         }
+
         else{
-            eliminarValorDeLista(valor, &((*punteroAlNodo)->siguienteNodo));
+            eliminarNumeroDeLaLista(numero, & ((*direccionDelNodo)->siguienteNodo) );
         }
+
     }
 
+
+
+}
+
+void imprimirLista(nodo nodoDeLista){
+    if(nodoDeLista != NULL){
+        printf("%d\n", nodoDeLista->valor);
+        imprimirLista(nodoDeLista->siguienteNodo);
+    }
 }

@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1560549909 source:/home/lucas/Desktop/union/main.c
+	<stdio.h>
+	<stdlib.h>
+

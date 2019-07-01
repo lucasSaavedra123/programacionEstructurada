@@ -8,33 +8,41 @@ struct s_nodo{
 
 typedef struct s_nodo * nodo;
 
-void agregarNumeroALista(int, nodo *);
+void agregarNumeroLista(int, nodo *);
 void imprimirLista(nodo);
-void imprimirEnReversaLista(nodo);
+void imprimirListaReversa(nodo);
 
-int main()
-{
-    nodo listaDeNumeros = NULL;
+int main(){
 
-    agregarNumeroALista(5, &listaDeNumeros);
-    agregarNumeroALista(10, &listaDeNumeros);
-    agregarNumeroALista(9, &listaDeNumeros);
-    agregarNumeroALista(2, &listaDeNumeros);
+    nodo listaDeNumeros;
+    listaDeNumeros = NULL;
 
-    imprimirEnReversaLista(listaDeNumeros);
+    agregarNumeroLista(4, &listaDeNumeros);
+    agregarNumeroLista(10, &listaDeNumeros);
+    agregarNumeroLista(-3, &listaDeNumeros);
+    agregarNumeroLista(25, &listaDeNumeros);
+    agregarNumeroLista(-8, &listaDeNumeros);
+
+    printf("-------LISTA-------\n");
+    imprimirLista(listaDeNumeros);
+    printf("\n");
+    printf("---LISTA REVERSA---\n");
+    imprimirListaReversa(listaDeNumeros);
 
     return 0;
 }
 
-void agregarNumeroALista(int numero, nodo * direccionDelNodo){
-    if( (*direccionDelNodo) == NULL ){
-        (*direccionDelNodo) = malloc( sizeof(struct s_nodo) );
-        (*direccionDelNodo)->valor = numero;
-        (*direccionDelNodo)->siguienteNodo = NULL;
+void agregarNumeroLista(int nuevoNumero, nodo * direccionDelNodoDeLaLista){
+
+    if( (*direccionDelNodoDeLaLista) == NULL ){
+        (*direccionDelNodoDeLaLista) = malloc( sizeof(struct s_nodo) );
+        (*direccionDelNodoDeLaLista)->siguienteNodo = NULL;
+        (*direccionDelNodoDeLaLista)->valor = nuevoNumero;
     }
     else{
-        agregarNumeroALista(numero, &((*direccionDelNodo)->siguienteNodo) );
+        agregarNumeroLista(nuevoNumero, &( (*direccionDelNodoDeLaLista)->siguienteNodo) );
     }
+
 }
 
 void imprimirLista(nodo nodoDeLista){
@@ -44,9 +52,9 @@ void imprimirLista(nodo nodoDeLista){
     }
 }
 
-void imprimirEnReversaLista(nodo nodoDeLista){
+void imprimirListaReversa(nodo nodoDeLista){
     if(nodoDeLista != NULL){
-        imprimirEnReversaLista(nodoDeLista->siguienteNodo);
+        imprimirListaReversa(nodoDeLista->siguienteNodo);
         printf("%d\n", nodoDeLista->valor);
     }
 }

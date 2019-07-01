@@ -8,7 +8,7 @@ struct s_nodo{
 
 typedef struct s_nodo * nodo;
 
-void agregarNumeroLista(int, nodo *);
+void agregarNumeroLista(nodo *, int);
 void imprimirLista(nodo);
 void imprimirListaReversa(nodo);
 
@@ -17,11 +17,11 @@ int main(){
     nodo listaDeNumeros;
     listaDeNumeros = NULL;
 
-    agregarNumeroLista(4, &listaDeNumeros);
-    agregarNumeroLista(10, &listaDeNumeros);
-    agregarNumeroLista(-3, &listaDeNumeros);
-    agregarNumeroLista(25, &listaDeNumeros);
-    agregarNumeroLista(-8, &listaDeNumeros);
+    agregarNumeroLista(&listaDeNumeros, 1);
+    agregarNumeroLista(&listaDeNumeros, 20);
+    agregarNumeroLista(&listaDeNumeros, -3);
+    agregarNumeroLista(&listaDeNumeros, 15);
+    agregarNumeroLista(&listaDeNumeros, 0);
 
     printf("-------LISTA-------\n");
     imprimirLista(listaDeNumeros);
@@ -32,7 +32,7 @@ int main(){
     return 0;
 }
 
-void agregarNumeroLista(int nuevoNumero, nodo * direccionDelNodoDeLaLista){
+void agregarNumeroLista(nodo * direccionDelNodoDeLaLista, int nuevoNumero){
 
     if( (*direccionDelNodoDeLaLista) == NULL ){
         (*direccionDelNodoDeLaLista) = malloc( sizeof(struct s_nodo) );
@@ -40,7 +40,7 @@ void agregarNumeroLista(int nuevoNumero, nodo * direccionDelNodoDeLaLista){
         (*direccionDelNodoDeLaLista)->valor = nuevoNumero;
     }
     else{
-        agregarNumeroLista(nuevoNumero, &( (*direccionDelNodoDeLaLista)->siguienteNodo) );
+        agregarNumeroLista(&( (*direccionDelNodoDeLaLista)->siguienteNodo), }nuevoNumero);
     }
 
 }

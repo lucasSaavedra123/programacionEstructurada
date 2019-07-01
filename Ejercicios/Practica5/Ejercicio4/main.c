@@ -9,8 +9,8 @@ struct s_nodo{
 typedef struct s_nodo * nodo;
 
 void agregarNumeroLista(nodo *, int);
+void eliminarPosicionLista(nodo *, int);
 void imprimirLista(nodo);
-void imprimirListaReversa(nodo);
 
 int main(){
 
@@ -26,8 +26,13 @@ int main(){
     printf("-------LISTA-------\n");
     imprimirLista(listaDeNumeros);
     printf("\n");
-    printf("---LISTA REVERSA---\n");
-    imprimirListaReversa(listaDeNumeros);
+
+    eliminarPosicionLista(&listaDeNumeros, 2);
+    eliminarPosicionLista(&listaDeNumeros, 0);
+
+    printf("-------LISTA-------\n");
+    imprimirLista(listaDeNumeros);
+
 
     return 0;
 }
@@ -45,16 +50,28 @@ void agregarNumeroLista(nodo * direccionDelNodoDeLaLista, int nuevoNumero){
 
 }
 
+void eliminarPosicionLista(nodo * direccionDelNodoDeLista, int posicion){
+    nodo nodoAuxiliar = NULL;
+
+    if( (*direccionDelNodoDeLista) != NULL ){ //Aunque pongamos un numero de posicion muy grande,
+                                              //si llegamos al NULL, se corta todo.
+        if( posicion == 0 ){
+            nodoAuxiliar = (*direccionDelNodoDeLista);
+            (*direccionDelNodoDeLista) = (*direccionDelNodoDeLista)->siguienteNodo;
+            free(nodoAuxiliar);
+        }
+
+        else{
+            eliminarPosicionLista( &((*direccionDelNodoDeLista)->siguienteNodo) , posicion-1 );
+        }
+
+    }
+
+}
+
 void imprimirLista(nodo nodoDeLista){
     if(nodoDeLista != NULL){
         printf("%d\n", nodoDeLista->valor);
         imprimirLista(nodoDeLista->siguienteNodo);
-    }
-}
-
-void imprimirListaReversa(nodo nodoDeLista){
-    if(nodoDeLista != NULL){
-        imprimirListaReversa(nodoDeLista->siguienteNodo);
-        printf("%d\n", nodoDeLista->valor);
     }
 }

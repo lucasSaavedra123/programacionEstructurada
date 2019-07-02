@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 /*
-PARA VISUALIZAR ARBOLES:
+PARA VISUALIZAR ARBOLES:ructurada/Ejercicios/Practica5/
 https://kanaka.github.io/rbt_cfs/trees.html
 Acordarse que usamos los "arboles binarios de busqueda"
 */
@@ -24,54 +24,7 @@ void porNivel(nodoArbolBinario, int);
 
 int main()
 {
-    nodoArbolBinario arbolBinarioDeNumeros = NULL;
-    agregarNumeroAlArbolBinario(&arbolBinarioDeNumeros, 2);
-    agregarNumeroAlArbolBinario(&arbolBinarioDeNumeros, -5);
-    agregarNumeroAlArbolBinario(&arbolBinarioDeNumeros, 10);
-    agregarNumeroAlArbolBinario(&arbolBinarioDeNumeros, 25);
-    agregarNumeroAlArbolBinario(&arbolBinarioDeNumeros, 1);
-    agregarNumeroAlArbolBinario(&arbolBinarioDeNumeros, 0);
-    agregarNumeroAlArbolBinario(&arbolBinarioDeNumeros, -2);
-    agregarNumeroAlArbolBinario(&arbolBinarioDeNumeros, 17);
-    agregarNumeroAlArbolBinario(&arbolBinarioDeNumeros, -3);
-    agregarNumeroAlArbolBinario(&arbolBinarioDeNumeros, -1);
-    agregarNumeroAlArbolBinario(&arbolBinarioDeNumeros, 100);
-
-    printf("---IMPRIMIR PREORDER---\n");
-    preorder(arbolBinarioDeNumeros);
-    printf("\n");
-
-    printf("---IMPRIMIR INORDER---\n");
-    inorder(arbolBinarioDeNumeros);
-    printf("\n");
-
-    printf("---IMPRIMIR POSTORDER---\n");
-    postorder(arbolBinarioDeNumeros);
-    printf("\n");
-
-    printf("---IMPRIMIR POR NIVEL---\n");
-    porNivel(arbolBinarioDeNumeros, );
-    printf("\n");
-
     return 0;
-}
-
-void agregarNumeroAlArbolBinario(nodoArbolBinario * direccionDelArbolDeNumeros, int numeroNuevo){
-
-    if( (*direccionDelArbolDeNumeros) == NULL ){
-        (*direccionDelArbolDeNumeros) = malloc( sizeof(struct s_nodo_bin) );
-        (*direccionDelArbolDeNumeros)->nodoDerecha = NULL;
-        (*direccionDelArbolDeNumeros)->nodoIzquierda = NULL;
-        (*direccionDelArbolDeNumeros)->valor = numeroNuevo;
-    }
-
-    else{
-        if( (*direccionDelArbolDeNumeros)->valor > numeroNuevo )
-            agregarNumeroAlArbolBinario( &((*direccionDelArbolDeNumeros)->nodoIzquierda) , numeroNuevo);
-        else if( (*direccionDelArbolDeNumeros)->valor < numeroNuevo )
-            agregarNumeroAlArbolBinario( &((*direccionDelArbolDeNumeros)->nodoDerecha) , numeroNuevo);
-    }
-
 }
 
 void preorder(nodoArbolBinario arbolBinarioDeNumeros){

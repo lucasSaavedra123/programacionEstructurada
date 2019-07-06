@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1562378344 source:/home/lucas/Desktop/Finales/final2017DiciembreB/Resolucion/ResolucionParte3-2/main.c
+	<stdio.h>
+	<stdlib.h>
+

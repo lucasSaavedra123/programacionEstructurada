@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1562378344 source:/home/lucas/Desktop/Finales/final2017DiciembreB/Resolucion/ResolucionParte3-2/main.c
+	<stdio.h>
+	<stdlib.h>
+
+1562429152 source:/home/lucas/Desktop/Finales/final2018JulioA/Resolucion/ResolucionParte3-2/main.c
+	<stdio.h>
+	<stdlib.h>
+
+1562442943 source:/home/lucas/Desktop/programacionEstructurada/Finales/final2016DiciembreA/Resolucion/ResolucionParte3-2/main.c
+	<stdio.h>
+	<stdlib.h>
+
+1562602921 source:/home/lucas/Desktop/programacionEstructurada/Finales/final2011Febrero/Resolucion/ResolucionParte3-2/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1562609899 source:/home/lucas/Desktop/programacionEstructurada/Finales/final2013Diciembre/Resolucion/ResolucionParte3-2/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <conio.h>
 
 typedef struct {
     char dni[9];
@@ -30,7 +29,7 @@ void cargarCadena(char ** cadena){
     char caracter = 0;
     (*cadena) = malloc(sizeof(char));
 
-    caracter = getche();
+    caracter = getchar();
 
     while( caracter != 10 ){
         *((*cadena)+indiceDeCaracteres) = caracter;
@@ -38,7 +37,7 @@ void cargarCadena(char ** cadena){
 
         (*cadena) = realloc((*cadena), sizeof(char) * (1 + indiceDeCaracteres));
 
-        caracter = getche();
+        caracter = getchar();
     }
 
     *((*cadena)+indiceDeCaracteres) = '\0';

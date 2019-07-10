@@ -54,7 +54,6 @@ void postorder(nodoArbolBinario arbolBinarioDeNumeros){
 
 void porNivel(nodoArbolBinario arbolBinarioDeNumeros, int nivel){
     if(arbolBinarioDeNumeros != NULL){
-
         if( nivel > 0 ){//Si estamos en el nivel 0, estamos en el nivel que queremos imprimir
             porNivel(arbolBinarioDeNumeros->nodoIzquierda, nivel - 1 );
             porNivel(arbolBinarioDeNumeros->nodoDerecha, nivel - 1 );
@@ -62,6 +61,5 @@ void porNivel(nodoArbolBinario arbolBinarioDeNumeros, int nivel){
         else if(nivel == 0){
             printf("%d\n", arbolBinarioDeNumeros->valor);
         }
-
     }
 }
